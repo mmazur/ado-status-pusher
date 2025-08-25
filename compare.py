@@ -56,10 +56,17 @@ def compare_builds(prev: str, latest: str):
             else:
                 formatted_time = 'N/A'
             
-            print(f"Build '{build_number}' queued at '{formatted_time}'")
-    else:
-        print("No new builds found.")
+            # Get requestedBy displayName if it exists
+            requested_by = ""
+            if 'requestedBy' in build and 'displayName' in build['requestedBy']:
+                requested_by = f" by {build['requestedBy']['displayName']}"
 
+            # Get requestedFor displayName if it exists
+            requested_for = ""
+            if 'requestedFor' in build and 'displayName' in build['requestedFor']:
+                requested_for = f" for {build['requestedFor']['displayName']}"
+
+            print(f"Build '{build_number}' queued at '{formatted_time}'{requested_by}{requested_for}")
 
 if __name__ == '__main__':
     compare_builds()
