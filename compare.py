@@ -58,8 +58,8 @@ def compare_builds(prev: str, latest: str):
             
             # Get requestedBy displayName if it exists
             requested_by = ""
-            if 'requestedBy' in build and 'displayName' in build['requestedBy']:
-                requested_by = f" by {build['requestedBy']['displayName']}"
+#            if 'requestedBy' in build and 'displayName' in build['requestedBy']:
+#                requested_by = f" by {build['requestedBy']['displayName']}"
 
             # Get requestedFor displayName if it exists
             requested_for = ""
