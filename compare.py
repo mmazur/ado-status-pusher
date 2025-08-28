@@ -65,8 +65,11 @@ def compare_builds(prev: str, latest: str):
             requested_for = ""
             if 'requestedFor' in build and 'displayName' in build['requestedFor']:
                 requested_for = f" for {build['requestedFor']['displayName']}"
+            
+            # Get definition name if it exists
+            definition_name = build['definition']['name']
 
-            print(f"Build '{build_number}' queued at '{formatted_time}'{requested_by}{requested_for}")
+            print(f"{definition_name} at '{formatted_time}'\n   Build '{build_number}' queued{requested_by}{requested_for}")
 
 if __name__ == '__main__':
     compare_builds()
