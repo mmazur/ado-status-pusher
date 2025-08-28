@@ -17,7 +17,7 @@ while true; do
     prevTS="$(head -n 1 var/prev.txt)"
     prev="builds/$prevTS.json"
 
-    az pipelines build list --definition-ids 428766 428757 428756 > $cur && \
+    az pipelines build list --definition-ids 428766 428757 428756 428764 428767 428763 > $cur && \
     ./compare.py $prev $cur > var/msg.txt
 
     if [ -s var/msg.txt ]; then
