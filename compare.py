@@ -69,7 +69,7 @@ def compare_builds(prev: str, latest: str):
             # Get definition name if it exists
             definition_name = build['definition']['name']
 
-            print(f"{definition_name} at '{formatted_time}'\n   Build '{build_number}' queued{requested_by}{requested_for}")
+            print(f"'{definition_name}' at '{formatted_time}'\n   Build '{build_number}' queued{requested_by}{requested_for}")
 
 if __name__ == '__main__':
     compare_builds()
