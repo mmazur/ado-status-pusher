@@ -69,7 +69,18 @@ def compare_builds(prev: str, latest: str):
             # Get definition name if it exists
             definition_name = build['definition']['name']
 
+            # Get templateParameters info if it exists
+            template_params = build.get('templateParameters', {})
+            rollout_type = template_params.get('rolloutType', 'n/a')
+            select = template_params.get('select', '*')
+            
             print(f"'{definition_name}' at '{formatted_time}'\n   Build '{build_number}' queued{requested_by}{requested_for}")
+            print(f"   Rollout Type: {rollout_type}, Select: {select}")
+            
+            # Check for validation duration override
+            if template_params.get('overrideManagedValidationDuration') == 'True':
+                validation_duration = template_params.get('managedValidationDurationInHours', 'n/a')
+                print(f"   Validation Duration Override: {validation_duration}h")
 
 if __name__ == '__main__':
     compare_builds()
